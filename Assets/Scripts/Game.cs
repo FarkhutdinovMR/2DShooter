@@ -15,14 +15,14 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Dies += OnPlayerDies;
-        _boss.Dies += OnBossDies;
+        _player.Died += OnPlayerDies;
+        _boss.Died += OnBossDies;
     }
 
     private void OnDisable()
     {
-        _player.Dies -= OnPlayerDies;
-        _boss.Dies -= OnBossDies;
+        _player.Died -= OnPlayerDies;
+        _boss.Died -= OnBossDies;
     }
 
     private void OnPlayerDies()

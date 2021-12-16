@@ -21,12 +21,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.Dies += OnDies;
+        _health.Died += OnDies;
     }
 
     private void OnDisable()
     {
-        _health.Dies -= OnDies;
+        _health.Died -= OnDies;
     }
 
     private void Update()

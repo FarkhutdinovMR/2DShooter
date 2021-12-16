@@ -12,7 +12,7 @@ public class MoveAnimation : MonoBehaviour
     private const string Landing = "Landing";
     private const string Falling = "Falling";
 
-    void Awake()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
@@ -23,16 +23,16 @@ public class MoveAnimation : MonoBehaviour
     {
         _movement.Jumped += OnJumped;
         _movement.Landed += OnLanded;
-        _movement.StartFalling += OnStartFalling;
-        _movement.Moves += OnMoves;
+        _movement.StartedFall += OnStartFalling;
+        _movement.Moved += OnMoves;
     }
 
     private void OnDisable()
     {
         _movement.Jumped -= OnJumped;
         _movement.Landed -= OnLanded;
-        _movement.StartFalling -= OnStartFalling;
-        _movement.Moves -= OnMoves;
+        _movement.StartedFall -= OnStartFalling;
+        _movement.Moved -= OnMoves;
     }
 
     private void OnJumped()

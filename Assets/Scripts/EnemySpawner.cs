@@ -40,9 +40,14 @@ public class EnemySpawner : ObjectPool
         _delay -= Time.deltaTime;
     }
 
-    public void Play(bool value)
+    public void Enable()
     {
-        _isActive = value;
+        _isActive = true;
+    }
+
+    public void Disable()
+    {
+        _isActive = false;
     }
 
     private void Spawn()

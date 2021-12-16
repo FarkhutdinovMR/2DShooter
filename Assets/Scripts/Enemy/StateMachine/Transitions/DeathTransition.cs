@@ -12,12 +12,12 @@ public class DeathTransition : Transition
 
     private void OnEnable()
     {
-        _health.Dies += OnDies;
+        _health.Died += OnDies;
     }
 
     private void OnDisable()
     {
-        _health.Dies -= OnDies;
+        _health.Died -= OnDies;
         NeedTransit = false;
     }
 

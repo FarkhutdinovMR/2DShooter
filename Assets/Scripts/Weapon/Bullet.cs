@@ -30,10 +30,19 @@ public class Bullet : MonoBehaviour
     {
         target.TakeDamage(_damage);
 
-        Vector2 direction = (collision.transform.position - transform.position).normalized;
-        Rigidbody2D _rigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
-        _rigidbody2D.AddForce(direction *_pushForce, ForceMode2D.Impulse);
+        PushTarget(collision.gameObject);
 
         Instantiate(_hitParticle, collision.GetContact(0).point, Quaternion.identity);
+    }
+
+    private void PushTarget(GameObject target)
+    {
+        Rigidbody2D _rigidbody2D = target.GetComponent<Rigidbody2D>();
+
+        if (_rigidbody2D != null)
+        {
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            _rigidbody2D.AddForce(direction * _pushForce, ForceMode2D.Impulse);
+        }
     }
 }

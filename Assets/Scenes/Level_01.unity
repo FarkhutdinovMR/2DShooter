@@ -7966,8 +7966,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 473343752}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 6
+        m_MethodName: Disable
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9407,7 +9407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7f9b34835940c4d90b9c612fe2dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxValue: 100
   _delayAfterDeath: 10
   _changed:
     m_PersistentCalls:
@@ -9654,8 +9654,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 473343752}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 6
+        m_MethodName: Enable
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13042,7 +13042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7f9b34835940c4d90b9c612fe2dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 150
+  _maxValue: 100
   _delayAfterDeath: 10
   _changed:
     m_PersistentCalls:

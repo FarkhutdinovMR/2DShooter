@@ -28,8 +28,8 @@ public class Movement : MonoBehaviour
         add => _landed.AddListener(value);
         remove => _landed.RemoveListener(value);
     }
-    public event UnityAction StartFalling;
-    public event UnityAction<float> Moves;
+    public event UnityAction StartedFall;
+    public event UnityAction<float> Moved;
 
     private void Start()
     {
@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
         if (_previousGrounded && _currentGrounded == false)
         {
             _previousGrounded = false;
-            StartFalling?.Invoke();
+            StartedFall?.Invoke();
         }
         else if (_previousGrounded == false && _currentGrounded)
         {
@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
     {
         SetDirection(direction);
         transform.Translate(Vector2.right * direction * _speed * Time.deltaTime, Space.World);
-        Moves?.Invoke(direction);
+        Moved?.Invoke(direction);
     }
 
     public bool TryJump()

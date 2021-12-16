@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth;
+    [SerializeField] private float _maxValue;
     [SerializeField] private float _delayAfterDeath;
     [SerializeField] private UnityEvent<float> _changed;
 
@@ -15,10 +15,10 @@ public class Health : MonoBehaviour
     private int _deadLayer = 8;
 
     public bool IsAlive => _value > 0f;
-    public float MaxHealth => _maxHealth;
+    public float MaxHealth => _maxValue;
     public float Value => _value;
 
-    public event UnityAction Dies;
+    public event UnityAction Died;
     public event UnityAction<float> Changed
     {
         add => _changed.AddListener(value);
@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _previousLayer = gameObject.layer;
-        _value = _maxHealth;
+        _value = _maxValue;
     }
 
     private void OnEnable()
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
         _value -= value;
 
         if (_value <= 0)
-            ToDeath();
+            Die();
         else
             _animator.SetTrigger(Hit);
 
@@ -58,21 +58,21 @@ public class Health : MonoBehaviour
     public void Kill()
     {
         _value = 0f;
-        ToDeath();
+        Die();
         _changed.Invoke(_value);
     }
 
     private void Initialize()
     {
         gameObject.layer = _previousLayer;
-        _value = _maxHealth;
+        _value = _maxValue;
     }
 
-    private void ToDeath()
+    private void Die()
     {
         gameObject.layer = _deadLayer;
         _animator.SetTrigger(Death);
-        Dies?.Invoke();
+        Died?.Invoke();
         StartCoroutine(Disable());
     }
 
