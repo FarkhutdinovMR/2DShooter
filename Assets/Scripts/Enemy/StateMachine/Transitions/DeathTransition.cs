@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[RequireComponent (typeof(Health))]
 public class DeathTransition : Transition
 {
     private Health _health;
@@ -12,16 +12,16 @@ public class DeathTransition : Transition
 
     private void OnEnable()
     {
-        _health.Died += OnDies;
+        _health.Died += OnDied;
     }
 
     private void OnDisable()
     {
-        _health.Died -= OnDies;
+        _health.Died -= OnDied;
         NeedTransit = false;
     }
 
-    private void OnDies()
+    private void OnDied()
     {
         NeedTransit = true;
     }

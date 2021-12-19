@@ -7,11 +7,6 @@ public class MoveAnimation : MonoBehaviour
     private Movement _movement;
     private Health _health;
 
-    private const string Speed = "Speed";
-    private const string Jump = "Jump";
-    private const string Landing = "Landing";
-    private const string Falling = "Falling";
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -37,23 +32,23 @@ public class MoveAnimation : MonoBehaviour
 
     private void OnJumped()
     {
-        _animator.SetTrigger(Jump);
+        _animator.SetTrigger(AnimatorCharacterController.States.Jump);
     }
 
     private void OnLanded()
     {
         if (_health.IsAlive)
-            _animator.SetTrigger(Landing);
+            _animator.SetTrigger(AnimatorCharacterController.States.Landing);
     }
 
     private void OnStartFalling()
     {
         if (_health.IsAlive)
-            _animator.SetTrigger(Falling);
+            _animator.SetTrigger(AnimatorCharacterController.States.Falling);
     }
 
     private void OnMoves(float speed)
     {
-        _animator.SetFloat(Speed, Mathf.Abs(speed));
+        _animator.SetFloat(AnimatorCharacterController.Params.Speed, Mathf.Abs(speed));
     }
 }

@@ -25,9 +25,6 @@ public class Health : MonoBehaviour
         remove => _changed.RemoveListener(value);
     }
 
-    private const string Hit = "Hit";
-    private const string Death = "Death";
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -45,12 +42,12 @@ public class Health : MonoBehaviour
         if (IsAlive == false)
             return;
 
-        _value -= value;
+        _value -= Mathf.Clamp(value, 0, _maxValue);
 
         if (_value <= 0)
             Die();
         else
-            _animator.SetTrigger(Hit);
+            _animator.SetTrigger(AnimatorCharacterController.States.Hit);
 
         _changed.Invoke(_value);
     }
@@ -71,7 +68,7 @@ public class Health : MonoBehaviour
     private void Die()
     {
         gameObject.layer = _deadLayer;
-        _animator.SetTrigger(Death);
+        _animator.SetTrigger(AnimatorCharacterController.States.Death);
         Died?.Invoke();
         StartCoroutine(Disable());
     }

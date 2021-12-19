@@ -13,8 +13,6 @@ public class ShootAttackState : State
     private Movement _movement;
     private Coroutine _coroutine;
 
-    private const string Shoot = "Shoot";
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -36,7 +34,7 @@ public class ShootAttackState : State
     {        
         float direction = (Target.transform.position - transform.position).normalized.x;
         _movement.SetDirection(direction);
-        _animator.SetTrigger(Shoot);
+        _animator.SetTrigger(AnimatorCharacterController.States.Shoot);
         yield return new WaitForSeconds(_delayBeforeShoot);
 
         Instantiate(_bullet, _shootPoint.position, transform.rotation);

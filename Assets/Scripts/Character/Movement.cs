@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(GroundChecker))]
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private float _groundCheckDistance;
     [SerializeField] private UnityEvent _jumped;
     [SerializeField] private UnityEvent _landed;
-    [SerializeField] private ContactFilter2D _filter;
 
     private Rigidbody2D _rigidbody2D;
+    private GroundChecker _groundChecker;
     private bool _rightDirection = true;
     private bool _previousGrounded = true;
     private bool _currentGrounded;
@@ -34,11 +33,12 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _groundChecker = GetComponent<GroundChecker>();
     }
 
     private void Update()
     {
-        _currentGrounded = CheckGround();
+        _currentGrounded = _groundChecker.Check();
 
         if (_previousGrounded && _currentGrounded == false)
         {
@@ -75,15 +75,6 @@ public class Movement : MonoBehaviour
         if ((direction < 0f && _rightDirection) ||
             (direction > 0f && _rightDirection == false))
             Flip();
-    }
-
-    public bool CheckGround()
-    {
-        RaycastHit2D[] raycastHit2D = new RaycastHit2D[1];
-
-        int results = _rigidbody2D.Cast(Vector2.down, _filter, raycastHit2D, _groundCheckDistance);
-
-        return results > 0;
     }
 
     private void Flip()

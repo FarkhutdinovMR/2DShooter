@@ -1037,6 +1037,7 @@ GameObject:
   - component: {fileID: 1376186110800182116}
   - component: {fileID: 8235502229252753316}
   - component: {fileID: 5359985999159163155}
+  - component: {fileID: 2883647179841036677}
   m_Layer: 7
   m_Name: Enemy_Zombie
   m_TagString: Untagged
@@ -1130,7 +1131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 6
   _jumpForce: 7
-  _groundCheckDistance: 0.1
   _jumped:
     m_PersistentCalls:
       m_Calls: []
@@ -1149,20 +1149,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _filter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 1
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!114 &3638992755876339152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1417,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+--- !u!114 &2883647179841036677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767422076862881212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5c69695b705b34c9712174b277cfb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: {x: 0, y: -0.7, z: 0}
+  _size: {x: 0.5, y: 0.3}
+  _filter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!1 &6895611715749848454
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class AttackState : State
 
     private IEnumerator Attack()
     {
-        _animator.SetTrigger("Attack");
+        _animator.SetTrigger(AnimatorCharacterController.States.Attack);
         yield return new WaitForSeconds(_delayBeforeTakeDamage);
 
         if ((Vector3.Distance(Target.transform.position, transform.position) <= _distance) && 
